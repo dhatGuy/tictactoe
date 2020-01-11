@@ -5,7 +5,10 @@
     text-align: center;
 }
 
-#container {
+
+
+
+.container {
     color: #fff;
     background-color: #5995DA;  /* Blue */
     padding: 20px 0;
@@ -14,7 +17,7 @@
    
 }
 
-#menu {
+.menu {
     width: 600px;
     display: flex;
     flex-wrap: wrap;   
