@@ -25,6 +25,7 @@ const gameBoard = (() => {
             e.target.textContent = 'X'
             board[e.target.id-1] = "X";
             amountofX++;
+            gameFlow.computerMove();
         }
   if(amountofX === 5 && amountofO === 4) {
         gameFlow.checkWin("end");
@@ -41,7 +42,6 @@ function initializeGame() {
     }     
 };
 
-initializeGame();
  
 
     let board = 
@@ -83,12 +83,20 @@ const gameFlow = (() => {
         (gameBoard.board[0] === "X" && gameBoard.board[4] === "X" && gameBoard.board[8] === "X") ||
         (gameBoard.board[2] === "X" && gameBoard.board[4] === "X" && gameBoard.board[6] === "X")) {
     
-            alert("Player 1 won!" );
-    
+          
             for(let i = 0; i < binge.length; i++) {
                 binge[i].removeEventListener('click', gameBoard.clickFunction);
                 }
-            player1.score++;
+                ++player1.score;
+
+                let scoreOverview = document.getElementById("score-overview");
+                scoreOverview.innerHTML = `Current score: ${player1.score} : ${player2.score}`;
+             
+                let newGame = document.querySelector(".newGame");
+                newGame.style.display = "block";
+
+                alert(`${player1.name} won this round`);
+
         }
         
         
@@ -100,15 +108,27 @@ const gameFlow = (() => {
         (gameBoard.board[2] === "O" && gameBoard.board[5] === "O" && gameBoard.board[8] === "O") ||
     (gameBoard.board[0] === "O" && gameBoard.board[4] === "O" && gameBoard.board[8] === "O") ||
     (gameBoard.board[2] === "O" && gameBoard.board[4] === "O" && gameBoard.board[6] === "O")) {
-        alert("Player 2 won!");
-   
+        
+        
         for(let i = 0; i < binge.length; i++) {
             binge[i].removeEventListener('click', gameBoard.clickFunction);
             }
-        player2.score++;
+        
+            ++player2.score;
+
+            let scoreOverview = document.getElementById("score-overview");
+                scoreOverview.innerHTML = `Current score: ${player1.score} : ${player2.score}`;
+                
+                let newGame = document.querySelector(".newGame");
+                newGame.style.display = "block";
+
+                alert(`${player2.name} won this round`);
+
     }
 
         else if (arg === "end") {
+            let newGame = document.querySelector(".newGame");
+                newGame.style.display = "block";
             alert("It's a tie!");
         }
         
@@ -121,18 +141,65 @@ const gameFlow = (() => {
             document.getElementById(`${g+1}`).textContent = "";
         }
         gameBoard.initializeGame();
+        let x = document.querySelector(".newGame");
+        x.style.display = "none";
 
     }
 
     function setPlayers() {
         player1 = Player(document.getElementById('player1').value);
         player2 = Player(document.getElementById('player2').value);
+        gameBoard.initializeGame();
+        let x = document.querySelector(".players");
+        let y = document.querySelector(".startGame");
+        x.style.display = "none";
+        y.style.display = "none";
+        let z = document.getElementById("player1-name");
+        z.style.display = "block";
+        z.innerHTML = `Player 1: ${player1.name}`
+        let z2 = document.getElementById("player2-name");
+        z2.style.display = "block";
+        z2.innerHTML = `Player 2: ${player2.name}`
+        let z3 = document.getElementById("score-overview");
+        z3.style.display = "block";
+        z3.innerHTML = `Current score: ${player1.score} : ${player2.score}`;
         
         }
+
+    function computerMove() {
+        
+        let freeSpaces = 0;
+
+        for(let g=0; g<gameBoard.board.length; g++) {
+            if(gameBoard.board[g] === "") freeSpaces++;
+        }
+
+        let atFreeSpace = 0;
+
+        let newMove = Math.ceil(Math.random()*freeSpaces);
+
+        for(let e=0; e<gameBoard.board.length; e++) {
+            if(gameBoard.board[e] === "") atFreeSpace++;
+            if(atFreeSpace === newMove) {
+
+                document.getElementById(`${e+1}`).textContent = "O";
+                gameBoard.board[e] = "O";
+                // amountofO++;
+
+                console.log("test");
+                return;
+
+            }
+            
+        }
+        console.log(newMove);
+    }
+
 
     return {
         checkWin,
         newGame,
-        setPlayers
+        setPlayers,
+        computerMove
     }
 })();

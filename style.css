@@ -21,8 +21,16 @@
     width: 600px;
     display: flex;
     flex-wrap: wrap;   
-    
  
+}
+
+#player1-score {
+    display: none;
+}
+
+.newGame {
+    display: none;
+    margin: 0 auto;
 }
 
 div div div {
