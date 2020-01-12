@@ -6,17 +6,26 @@
 <body>
 <h1>Tic Tac Toe</h1>
 
+<br/>
+<INPUT TYPE="Radio" Name="playertype" Value="PVP" checked onclick="gameBoard.playMode()">Player vs Player
+  <INPUT TYPE="Radio" Name="playertype" Value="PVC-easy" onclick="gameBoard.playMode()">Player vs Computer (easy)
+  <INPUT TYPE="Radio" Name="playertype" Value="PVC-unbeatable" onclick="gameBoard.playMode()">Player vs Computer (unbeatable)
+<br/>
+<br/>
 
+<form>
 <div class="players">
   <label for="Player 1"> Player One <br>
-  <input type="text" id="player1">
+  <input type="text" id="player1" required>
   </label><br>
+<div class="player2">
   <label for="Player 2"> Player Two <br>
-  <input type="text" id="player2">
+  <input type="text" id="player2" required>
   </label>
+  </div>
 </div>
-<button class="startGame" onclick="gameFlow.setPlayers()">Start Game</button>
-
+<input type='submit' class="startGame" value="Start Game">
+</form>
 
 <div id="score">
   <div id = 'player1-name'>
