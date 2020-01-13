@@ -30,12 +30,13 @@ const gameBoard = (() => {
             board[e.target.id-1] = "X";
             amountofX++;
             if(player2.name === "Computer (easy)") {
-                gameFlow.computerMove(); 
+                gameFlow.computerMove();
             }
             else if (player2.name === "Computer (unbeatable)") {
                 if((amountofO + amountofX) <= 8) {
                 let aiIndex = aiPlay();
                 document.getElementById(`${aiIndex+1}`).textContent = "O";
+                document.getElementById(`${aiIndex+1}`).removeEventListener('click', gameBoard.clickFunction);
                 gameBoard.board[aiIndex] = "O";
                 }
             }
@@ -241,6 +242,8 @@ const gameFlow = (() => {
 
                 document.getElementById(`${e+1}`).textContent = "O";
                 gameBoard.board[e] = "O";
+                document.getElementById(`${e+1}`).removeEventListener('click', gameBoard.clickFunction);
+
                 // amountofO++;
 
                 console.log("test");
