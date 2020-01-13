@@ -6,10 +6,12 @@
 <body>
 <h1>Tic Tac Toe</h1>
 
+<div id="playertype">
 <br/>
 <INPUT TYPE="Radio" Name="playertype" Value="PVP" checked onclick="gameBoard.playMode()">Player vs Player
   <INPUT TYPE="Radio" Name="playertype" Value="PVC-easy" onclick="gameBoard.playMode()">Player vs Computer (easy)
   <INPUT TYPE="Radio" Name="playertype" Value="PVC-unbeatable" onclick="gameBoard.playMode()">Player vs Computer (unbeatable)
+</div>
 <br/>
 <br/>
 
@@ -40,6 +42,8 @@
   
 </div>
 <button class="newGame" onclick="gameFlow.newGame()">Next Round</button>
+<br/>
+<button class="reset" onclick="location.reload()">Reset Game</button>
 
 <div class="container">
   <div class="menu">
@@ -60,7 +64,6 @@
 </div>
 
 
-<button class="reset" onclick="location.reload()">Reset</button>
 
 <script src="script.js"></script>
 </body>

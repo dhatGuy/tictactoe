@@ -207,6 +207,8 @@ const gameFlow = (() => {
         gameBoard.initializeGame();
         let x = document.querySelector(".players");
         let y = document.querySelector(".startGame");
+        let y2 = document.getElementById("playertype");
+        y2.style.display = "none";
         x.style.display = "none";
         y.style.display = "none";
         let z = document.getElementById("player1-name");
