@@ -129,16 +129,47 @@ const gameFlow = (() => {
     let binge = document.querySelectorAll("div > div > div");
     
     let checkWin = function(arg) {
-        if((gameBoard.board[0] === "X" && gameBoard.board[1] === "X" && gameBoard.board[2] === "X") || 
-        (gameBoard.board[3] === "X" && gameBoard.board[4] === "X" && gameBoard.board[5] === "X") ||
-        (gameBoard.board[6] === "X" && gameBoard.board[7] === "X" && gameBoard.board[8] === "X") ||
-        (gameBoard.board[0] === "X" && gameBoard.board[3] === "X" && gameBoard.board[6] === "X") ||
-        (gameBoard.board[1] === "X" && gameBoard.board[4] === "X" && gameBoard.board[7] === "X") ||
-        (gameBoard.board[2] === "X" && gameBoard.board[5] === "X" && gameBoard.board[8] === "X") ||
-        (gameBoard.board[0] === "X" && gameBoard.board[4] === "X" && gameBoard.board[8] === "X") ||
-        (gameBoard.board[2] === "X" && gameBoard.board[4] === "X" && gameBoard.board[6] === "X")) {
+        // if((gameBoard.board[0] === "X" && gameBoard.board[1] === "X" && gameBoard.board[2] === "X") || 
+        // (gameBoard.board[3] === "X" && gameBoard.board[4] === "X" && gameBoard.board[5] === "X") ||
+        // (gameBoard.board[6] === "X" && gameBoard.board[7] === "X" && gameBoard.board[8] === "X") ||
+        // (gameBoard.board[0] === "X" && gameBoard.board[3] === "X" && gameBoard.board[6] === "X") ||
+        // (gameBoard.board[1] === "X" && gameBoard.board[4] === "X" && gameBoard.board[7] === "X") ||
+        // (gameBoard.board[2] === "X" && gameBoard.board[5] === "X" && gameBoard.board[8] === "X") ||
+        // (gameBoard.board[0] === "X" && gameBoard.board[4] === "X" && gameBoard.board[8] === "X") ||
+        // (gameBoard.board[2] === "X" && gameBoard.board[4] === "X" && gameBoard.board[6] === "X")) {
     
-          
+          let winningComb = [""];
+            if(gameBoard.board[0] === "X" && gameBoard.board[1] === "X" && gameBoard.board[2] === "X") {
+                winningComb = [0,1,2];
+            }
+            else if(gameBoard.board[3] === "X" && gameBoard.board[4] === "X" && gameBoard.board[5] === "X") {
+                winningComb = [3,4,5];
+            }
+            else if(gameBoard.board[6] === "X" && gameBoard.board[7] === "X" && gameBoard.board[8] === "X") {
+                winningComb = [6,7,8];
+            }
+            else if(gameBoard.board[0] === "X" && gameBoard.board[3] === "X" && gameBoard.board[6] === "X") {
+                winningComb = [0,3,6];
+            }
+            else if(gameBoard.board[1] === "X" && gameBoard.board[4] === "X" && gameBoard.board[7] === "X") {
+                winningComb = [1,4,7];
+            }
+            else if(gameBoard.board[2] === "X" && gameBoard.board[5] === "X" && gameBoard.board[8] === "X") {
+                winningComb = [2,5,8];
+            }
+            else if(gameBoard.board[0] === "X" && gameBoard.board[4] === "X" && gameBoard.board[8] === "X") {
+                winningComb = [0,4,8];
+            }
+            else if(gameBoard.board[2] === "X" && gameBoard.board[4] === "X" && gameBoard.board[6] === "X") {
+                winningComb = [2,4,6];
+            }
+            if(winningComb[0] !== "") {
+            winningComb.forEach(e => {
+                let y2 = document.getElementById(`${e+1}`);
+                y2.style.backgroundColor = "grey";
+            })
+
+
             for(let i = 0; i < binge.length; i++) {
                 binge[i].removeEventListener('click', gameBoard.clickFunction);
                 }
@@ -155,15 +186,47 @@ const gameFlow = (() => {
         }
         
         
-        else if((gameBoard.board[0] === "O" && gameBoard.board[1] === "O" && gameBoard.board[2] === "O") || 
-        (gameBoard.board[3] === "O" && gameBoard.board[4] === "O" && gameBoard.board[5] === "O") ||
-        (gameBoard.board[6] === "O" && gameBoard.board[7] === "O" && gameBoard.board[8] === "O") ||
-        (gameBoard.board[0] === "O" && gameBoard.board[3] === "O" && gameBoard.board[6] === "O") ||
-        (gameBoard.board[1] === "O" && gameBoard.board[4] === "O" && gameBoard.board[7] === "O") ||
-        (gameBoard.board[2] === "O" && gameBoard.board[5] === "O" && gameBoard.board[8] === "O") ||
-    (gameBoard.board[0] === "O" && gameBoard.board[4] === "O" && gameBoard.board[8] === "O") ||
-    (gameBoard.board[2] === "O" && gameBoard.board[4] === "O" && gameBoard.board[6] === "O")) {
-        
+    //     else if((gameBoard.board[0] === "O" && gameBoard.board[1] === "O" && gameBoard.board[2] === "O") || 
+    //     (gameBoard.board[3] === "O" && gameBoard.board[4] === "O" && gameBoard.board[5] === "O") ||
+    //     (gameBoard.board[6] === "O" && gameBoard.board[7] === "O" && gameBoard.board[8] === "O") ||
+    //     (gameBoard.board[0] === "O" && gameBoard.board[3] === "O" && gameBoard.board[6] === "O") ||
+    //     (gameBoard.board[1] === "O" && gameBoard.board[4] === "O" && gameBoard.board[7] === "O") ||
+    //     (gameBoard.board[2] === "O" && gameBoard.board[5] === "O" && gameBoard.board[8] === "O") ||
+    // (gameBoard.board[0] === "O" && gameBoard.board[4] === "O" && gameBoard.board[8] === "O") ||
+    // (gameBoard.board[2] === "O" && gameBoard.board[4] === "O" && gameBoard.board[6] === "O")) {
+
+        let winningCombO = [""];
+        if(gameBoard.board[0] === "O" && gameBoard.board[1] === "O" && gameBoard.board[2] === "O") {
+            winningCombO = [0,1,2];
+        }
+        else if(gameBoard.board[3] === "O" && gameBoard.board[4] === "O" && gameBoard.board[5] === "O") {
+            winningCombO = [3,4,5];
+        }
+        else if(gameBoard.board[6] === "O" && gameBoard.board[7] === "O" && gameBoard.board[8] === "O") {
+            winningCombO = [6,7,8];
+        }
+        else if(gameBoard.board[0] === "O" && gameBoard.board[3] === "O" && gameBoard.board[6] === "O") {
+            winningCombO = [0,3,6];
+        }
+        else if(gameBoard.board[1] === "O" && gameBoard.board[4] === "O" && gameBoard.board[7] === "O") {
+            winningCombO = [1,4,7];
+        }
+        else if(gameBoard.board[2] === "O" && gameBoard.board[5] === "O" && gameBoard.board[8] === "O") {
+            winningCombO = [2,5,8];
+        }
+        else if(gameBoard.board[0] === "O" && gameBoard.board[4] === "O" && gameBoard.board[8] === "O") {
+            winningCombO = [0,4,8];
+        }
+        else if(gameBoard.board[2] === "O" && gameBoard.board[4] === "O" && gameBoard.board[6] === "O") {
+            winningCombO = [2,4,6];
+        }
+
+       
+    if(winningCombO[0] !== "") {
+        winningCombO.forEach(e => {
+            let y2 = document.getElementById(`${e+1}`);
+            y2.style.backgroundColor = "grey";
+        })
         
         for(let i = 0; i < binge.length; i++) {
             binge[i].removeEventListener('click', gameBoard.clickFunction);
@@ -181,7 +244,7 @@ const gameFlow = (() => {
 
     }
 
-        else if (arg === "end") {
+        else if (winningComb[0] === "" && arg === "end") {
             let newGame = document.querySelector(".newGame");
                 newGame.style.display = "block";
             alert("It's a tie!");
@@ -195,6 +258,7 @@ const gameFlow = (() => {
         for(let g=0; g<gameBoard.board.length;g++) {
             gameBoard.board[g] = g;
             document.getElementById(`${g+1}`).textContent = "";
+            document.getElementById(`${g+1}`).style.backgroundColor = "mediumturquoise";
         }
         gameBoard.initializeGame();
         let x = document.querySelector(".newGame");

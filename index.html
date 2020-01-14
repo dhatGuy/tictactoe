@@ -9,9 +9,17 @@
 
 <div id="playertype">
 <br/>
-<INPUT TYPE="Radio" Name="playertype" Value="PVP" checked onclick="gameBoard.playMode()">Player vs Player
-  <INPUT TYPE="Radio" Name="playertype" Value="PVC-easy" onclick="gameBoard.playMode()">Player vs Computer (easy)
-  <INPUT TYPE="Radio" Name="playertype" Value="PVC-unbeatable" onclick="gameBoard.playMode()">Player vs Computer (unbeatable)
+<label for="PVP">
+<INPUT TYPE="Radio" Name="playertype" id = 'PVP' Value="PVP" checked onclick="gameBoard.playMode()">
+  Player vs Player</label>
+
+  <label for="pvc-easy">
+    <INPUT TYPE="Radio" Name="playertype" id='pvc-easy' Value="PVC-easy" onclick="gameBoard.playMode()">
+      Player vs Computer(Easy) </label>
+
+  <label for="pvc-unbeatable">
+    <INPUT TYPE="Radio" Name="playertype" id= 'pvc-unbeatable' Value="PVC-unbeatable" onclick="gameBoard.playMode()">
+      Player vs Computer(Unbeatable)</label>
 </div>
 <br/>
 
