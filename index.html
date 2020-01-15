@@ -1,78 +1,88 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-  <link rel="stylesheet" href="style.css">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <!-- <script src="https://kit.fontawesome.com/e63dccc6aa.js" crossorigin="anonymous"></script> -->
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-<h1>Tic Tac Toe</h1>
+  <h1>Tic Tac Toe</h1>
 
-<div id="playertype">
-<br/>
-<label for="PVP">
-<INPUT TYPE="Radio" Name="playertype" id = 'PVP' Value="PVP" checked onclick="gameBoard.playMode()">
-  Player vs Player</label>
-
-  <label for="pvc-easy">
-    <INPUT TYPE="Radio" Name="playertype" id='pvc-easy' Value="PVC-easy" onclick="gameBoard.playMode()">
-      Player vs Computer(Easy) </label>
-
-  <label for="pvc-unbeatable">
-    <INPUT TYPE="Radio" Name="playertype" id= 'pvc-unbeatable' Value="PVC-unbeatable" onclick="gameBoard.playMode()">
-      Player vs Computer(Unbeatable)</label>
-</div>
-<br/>
-
-<form>
-<div class="players">
-  <label for="Player 1"> Player One <br>
-  <input type="text" id="player1" required>
-  </label><br>
-<div class="player2">
-  <label for="Player 2"> Player Two <br>
-  <input type="text" id="player2" required>
-  </label>
-  </div>
-</div>
-<button type='submit' class="startGame" value="Start Game">Start Game</button>
-</form>
-
-<div id="score">
-  <div id = 'player1-name'>
-    
-  </div>
-  <div id = 'player2-name'>
-    
-  </div>
-  <div id = 'score-overview'>
-    
-  </div>
-  
-</div>
-<button class="newGame" onclick="gameFlow.newGame()">Next Round</button>
-<br/>
-<button class="reset" onclick="location.reload()">Reset Game</button>
-
-<div class="container">
-  <div class="menu">
-    <div id="1"></div> 
-    <div id="2"></div>
-    <div id="3"></div>
-  
-    <div id="4"></div>
-    <div id="5"></div>
-    <div id="6"></div>
-  
-    <div id="7"></div>
-    <div id="8"></div>
-    <div id="9"></div>
-  
+  <div class="play-mode">
+    <button class="single">
+      Play against the computer
+    </button> <br>
+    <button class="multi">
+      Play with a friend
+    </button>
   </div>
 
-</div>
+  <div id="playertype">
+    <br />
+    <!-- <label for="PVP" class="pvp-label">
+      <input type="Radio" id="PVP" value="PVP" checked onclick="gameBoard.playMode()" />
+      <i class="fas fa-user-friends">Player vs Player</i></label> -->
+
+    <label for="pvc-easy">
+      <input type="button" id="pvc-easy" value="PVC-easy"  />
+      <!-- onclick="gameBoard.playMode()" -->
+      <!-- <i class="fas fa-user">Player vs Computer(Easy)</i> -->
+    </label>
+
+    <label for="pvc-unbeatable">
+      <input type="submit" id="pvc-unbeatable" value="PVC-unbeatable" />
+      <!-- onclick="gameBoard.playMode() -->
+      <!-- <i class="fas fa-user">Player vs Computer(Unbeatable)</i></label> -->
+  </div>
+  <br />
 
 
+  <form>
+    <div class="players">
+      <label for="Player 1">
+        Player One <br />
+        <input type="text" id="player1" required placeholder="Your Name"/> </label><br />
+      <div class="player2">
+        <label for="Player 2">
+          Player Two <br />
+          <input type="text" id="player2" required placeholder="Friend's Name"/>
+        </label>
+      </div>
+    </div>
+    <button type="submit" class="startGame" value="Start Game">
+      Start Game
+    </button>
+  </form>
 
-<script src="script.js"></script>
+  <div id="score">
+    <div id="player1-name"></div>
+    <div id="player2-name"></div>
+    <div id="score-overview"></div>
+  </div>
+  <button class="newGame" onclick="gameFlow.newGame()">Next Round</button>
+  <br />
+  <button class="reset" onclick="location.reload()">Reset Game</button>
+
+  <div class="grid-container">
+    <div class="menu">
+      <div id="1"></div>
+      <div id="2"></div>
+      <div id="3"></div>
+
+      <div id="4"></div>
+      <div id="5"></div>
+      <div id="6"></div>
+
+      <div id="7"></div>
+      <div id="8"></div>
+      <div id="9"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
 </body>
+
 </html>
