@@ -5,7 +5,7 @@ const gameBoard = (() => {
 
 
     let clickFunction = function (e) {
-        console.log(e)
+        // console.log(e)
 
         let amountofX = 0;
         let amountofO = 0;
@@ -15,8 +15,8 @@ const gameBoard = (() => {
             else if (board[g] === "O") amountofO++;
         }
 
-        console.log("amountofX " + amountofX);
-        console.log("amountofO " + amountofO);
+        // console.log("amountofX " + amountofX);
+        // console.log("amountofO " + amountofO);
 
 
         if (amountofX > amountofO) {
@@ -64,10 +64,6 @@ const gameBoard = (() => {
                 e.preventDefault()
             })
     }
-
-
-
-
 
     let board =
         [
@@ -269,14 +265,65 @@ const gameFlow = (() => {
 
                 // amountofO++;
 
-                console.log("test");
+                // console.log("test");
                 return;
 
             }
 
         }
-        console.log(newMove);
+        // console.log(newMove);
     }
+
+    const startGame = () => {
+        document.querySelector('form')
+            .addEventListener('submit', e => {
+                gameFlow.setPlayers()
+                e.preventDefault()
+                document.querySelector(".grid-container").style.display = "flex";
+                document.querySelector(".reset").style.display = "block";
+            })
+    };
+    startGame();
+
+
+
+let playMode = () =>{
+    let single = document.querySelector('.single')
+    let multi = document.querySelector('.multi')
+    let mode = document.querySelector('.play-mode')
+
+
+    mode.addEventListener('click', e =>{
+        if(e.target.className == 'single'){
+            document.querySelector('#playertype').style.display = 'flex';
+            document.querySelector('.play-mode').style.display = 'none';
+            // document.querySelector('.pvp-label').style.display = 'none'
+        } else {
+            document.querySelector('form').style.display = 'block'
+            document.querySelector('.play-mode').style.display = 'none'
+        }
+    })
+}
+
+let playComp = () =>{
+    document.querySelector('#playertype').addEventListener('click', e => {
+        if(e.target.id == 'pvc-easy'){
+            document.querySelector('form').style.display = 'block';
+            document.querySelector('.player2').style.display = "none";
+            document.getElementById('playertype').style.display = "none";
+            document.getElementById('player2').value="Computer (easy)";
+            // document.querySelector('.grid-container').style.display = 'flex'
+        } else {
+            document.querySelector('form').style.display = 'block';
+            document.querySelector('.player2').style.display = "none";
+            document.getElementById('playertype').style.display = "none";
+            document.getElementById('player2').value="Computer (hard)";
+        }
+    })
+}
+
+playMode();
+playComp();
 
 
     return {
@@ -325,8 +372,8 @@ function aiPlay() {
     var bestSpot = minimax(gameBoard.board, aiPlayer);
 
     //logging the results
-    console.log("index: " + bestSpot.index);
-    console.log("function calls: " + fc);
+    // console.log("index: " + bestSpot.index);
+    // console.log("function calls: " + fc);
 
     // the main minimax function
     function minimax(newBoard, player) {
@@ -408,51 +455,4 @@ function aiPlay() {
 
 };
 
-const startGame = () => {
-    document.querySelector('form')
-        .addEventListener('submit', e => {
-            gameFlow.setPlayers()
-            e.preventDefault()
-            document.querySelector(".grid-container").style.display = "flex";
-            document.querySelector(".reset").style.display = "block";
-        })
-};
-startGame();
 
-let playMode = () =>{
-    let single = document.querySelector('.single')
-    let multi = document.querySelector('.multi')
-    let mode = document.querySelector('.play-mode')
-
-
-    mode.addEventListener('click', e =>{
-        if(e.target.className == 'single'){
-            document.querySelector('#playertype').style.display = 'flex';
-            document.querySelector('.play-mode').style.display = 'none';
-            // document.querySelector('.pvp-label').style.display = 'none'
-        } else {
-            document.querySelector('form').style.display = 'block'
-            document.querySelector('.play-mode').style.display = 'none'
-        }
-    })
-}
-
-let playComp = () =>{
-    document.querySelector('#playertype').addEventListener('click', e => {
-        if(e.target.id == 'pvc-easy'){
-            document.querySelector('form').style.display = 'block';
-            document.querySelector('.player2').style.display = "none";
-            document.getElementById('playertype').style.display = "none";
-            document.getElementById('player2').value="Computer (easy)";
-            // document.querySelector('.grid-container').style.display = 'flex'
-        } else {
-            document.querySelector('form').style.display = 'block';
-            document.querySelector('.player2').style.display = "none";
-            document.getElementById('playertype').style.display = "none";
-            document.getElementById('player2').value="Computer (hard)";
-        }
-    })
-}
-
-playMode()
-playComp()
