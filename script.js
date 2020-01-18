@@ -32,7 +32,7 @@ const gameBoard = (() => {
             if (player2.name === "Computer (easy)") {
                 gameFlow.computerMove();
             }
-            else if (player2.name === "Computer (unbeatable)") {
+            else if (player2.name === "Computer (hard)") {
                 if ((amountofO + amountofX) <= 8) {
                     let aiIndex = aiPlay();
                     document.getElementById(`${aiIndex + 1}`).textContent = "O";
@@ -57,31 +57,6 @@ const gameBoard = (() => {
         }
     };
 
-
-    // const playMode = () => {
-        // let pvp = document.querySelector('[value=PVP]')
-        // let pvcEasy = document.querySelector('[value=PVC-easy]')
-        // let pvcUnbeat = document.querySelector('[value=PVC-unbeatable]')
-        // let players = document.querySelector('.player2')
-
-        // if (pvcEasy.checked) {
-        //     players.style.display = 'none';
-        //     document.getElementById('player2').value = "Computer (easy)";
-        // }
-
-        // else if (pvcUnbeat.checked) {
-        //     players.style.display = 'none';
-        //     document.getElementById('player2').value = "Computer (unbeatable)";
-        // }
-
-        // else if (pvp.checked) {
-        //     document.getElementById('player2').value = "";
-        //     players.style.display = 'block';
-
-        // }
-
-    // };
-
     const startGame = () => {
         document.querySelector('form')
             .addEventListener('submit', e => {
@@ -105,7 +80,6 @@ const gameBoard = (() => {
         board,
         clickFunction,
         initializeGame,
-        // playMode,
         startGame
     }
 })();
@@ -129,14 +103,6 @@ const gameFlow = (() => {
     let binge = document.querySelectorAll("div > div > div");
 
     let checkWin = function (arg) {
-        // if((gameBoard.board[0] === "X" && gameBoard.board[1] === "X" && gameBoard.board[2] === "X") || 
-        // (gameBoard.board[3] === "X" && gameBoard.board[4] === "X" && gameBoard.board[5] === "X") ||
-        // (gameBoard.board[6] === "X" && gameBoard.board[7] === "X" && gameBoard.board[8] === "X") ||
-        // (gameBoard.board[0] === "X" && gameBoard.board[3] === "X" && gameBoard.board[6] === "X") ||
-        // (gameBoard.board[1] === "X" && gameBoard.board[4] === "X" && gameBoard.board[7] === "X") ||
-        // (gameBoard.board[2] === "X" && gameBoard.board[5] === "X" && gameBoard.board[8] === "X") ||
-        // (gameBoard.board[0] === "X" && gameBoard.board[4] === "X" && gameBoard.board[8] === "X") ||
-        // (gameBoard.board[2] === "X" && gameBoard.board[4] === "X" && gameBoard.board[6] === "X")) {
 
         let winningComb = [""];
         if (gameBoard.board[0] === "X" && gameBoard.board[1] === "X" && gameBoard.board[2] === "X") {
@@ -184,16 +150,6 @@ const gameFlow = (() => {
             alert(`${player1.name} won this round`);
 
         }
-
-
-        //     else if((gameBoard.board[0] === "O" && gameBoard.board[1] === "O" && gameBoard.board[2] === "O") || 
-        //     (gameBoard.board[3] === "O" && gameBoard.board[4] === "O" && gameBoard.board[5] === "O") ||
-        //     (gameBoard.board[6] === "O" && gameBoard.board[7] === "O" && gameBoard.board[8] === "O") ||
-        //     (gameBoard.board[0] === "O" && gameBoard.board[3] === "O" && gameBoard.board[6] === "O") ||
-        //     (gameBoard.board[1] === "O" && gameBoard.board[4] === "O" && gameBoard.board[7] === "O") ||
-        //     (gameBoard.board[2] === "O" && gameBoard.board[5] === "O" && gameBoard.board[8] === "O") ||
-        // (gameBoard.board[0] === "O" && gameBoard.board[4] === "O" && gameBoard.board[8] === "O") ||
-        // (gameBoard.board[2] === "O" && gameBoard.board[4] === "O" && gameBoard.board[6] === "O")) {
 
         let winningCombO = [""];
         if (gameBoard.board[0] === "O" && gameBoard.board[1] === "O" && gameBoard.board[2] === "O") {
@@ -273,15 +229,18 @@ const gameFlow = (() => {
         let x = document.querySelector(".players");
         let y = document.querySelector(".startGame");
         let y2 = document.getElementById("playertype");
+        document.getElementById("scoreboard").style.display = "none";
         y2.style.display = "none";
         x.style.display = "none";
         y.style.display = "none";
+
+        document.getElementById("score").style.display = "flex";
         let z = document.getElementById("player1-name");
         z.style.display = "block";
-        z.innerHTML = `Player 1: ${player1.name}`
+        z.innerHTML = `P1: ${player1.name}`
         let z2 = document.getElementById("player2-name");
         z2.style.display = "block";
-        z2.innerHTML = `Player 2: ${player2.name}`
+        z2.innerHTML = `P2: ${player2.name}`
         let z3 = document.getElementById("score-overview");
         z3.style.display = "block";
         z3.innerHTML = `Current score: ${player1.score} : ${player2.score}`;
@@ -490,7 +449,7 @@ let playComp = () =>{
             document.querySelector('form').style.display = 'block';
             document.querySelector('.player2').style.display = "none";
             document.getElementById('playertype').style.display = "none";
-            document.getElementById('player2').value="Computer (unbeatable)";
+            document.getElementById('player2').value="Computer (hard)";
         }
     })
 }

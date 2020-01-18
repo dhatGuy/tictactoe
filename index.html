@@ -3,12 +3,15 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-  <!-- <script src="https://kit.fontawesome.com/e63dccc6aa.js" crossorigin="anonymous"></script> -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <h1>Tic Tac Toe</h1>
+<div id="scoreboard">
+<br/>
+<br/>
+</div>
 
   <div class="play-mode">
     <button class="single">
@@ -18,25 +21,21 @@
       Play with a friend
     </button>
   </div>
-
+  
   <div id="playertype">
-    <br />
-    <!-- <label for="PVP" class="pvp-label">
-      <input type="Radio" id="PVP" value="PVP" checked onclick="gameBoard.playMode()" />
-      <i class="fas fa-user-friends">Player vs Player</i></label> -->
+    
+      <div id="difficulty">
+        Choose your difficulty level
+      </div>
+     <div>
+      <input type="button" id="pvc-easy" value="Computer (easy)"  />
+      </div>
+      <div>
+      <input type="submit" id="pvc-unbeatable" value="Computer (hard)" />
 
-    <label for="pvc-easy">
-      <input type="button" id="pvc-easy" value="PVC-easy"  />
-      <!-- onclick="gameBoard.playMode()" -->
-      <!-- <i class="fas fa-user">Player vs Computer(Easy)</i> -->
-    </label>
+        </div>
+ </div>
 
-    <label for="pvc-unbeatable">
-      <input type="submit" id="pvc-unbeatable" value="PVC-unbeatable" />
-      <!-- onclick="gameBoard.playMode() -->
-      <!-- <i class="fas fa-user">Player vs Computer(Unbeatable)</i></label> -->
-  </div>
-  <br />
 
 
   <form>
@@ -50,20 +49,22 @@
           <input type="text" id="player2" required placeholder="Friend's Name"/>
         </label>
       </div>
-    </div>
     <button type="submit" class="startGame" value="Start Game">
       Start Game
     </button>
+  </div>
   </form>
 
   <div id="score">
     <div id="player1-name"></div>
     <div id="player2-name"></div>
     <div id="score-overview"></div>
+    <button class="newGame" onclick="gameFlow.newGame()">New Round</button>
+    <button class="reset" onclick="location.reload()">Reset Game</button>
   </div>
-  <button class="newGame" onclick="gameFlow.newGame()">Next Round</button>
-  <br />
-  <button class="reset" onclick="location.reload()">Reset Game</button>
+  
+  
+  
 
   <div class="grid-container">
     <div class="menu">

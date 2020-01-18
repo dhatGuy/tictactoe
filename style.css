@@ -22,14 +22,19 @@
 }
 
 #playertype {
-  width: 500px;
-  margin: auto;
+  width: 600px;
+  margin: 0 auto;
   border: 1px solid #000;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-around;
   display: none;
+  height: 110px;
+  flex-wrap: wrap;
+}
+
+#difficulty {
+  flex-basis: 100%;
 }
 
 .play-mode{
@@ -66,12 +71,33 @@ h1 {
   flex-wrap: wrap;
 }
 
+.players {
+  border: 1px solid #000;
+  width: 300px;
+  margin: 0 auto;
+}
+
 #player1-score {
   display: none;
 }
 
 #score {
   font-weight: 600;
+  border: 1px solid #000;
+  width: 300px;
+  margin: 0 auto;
+  display: none;
+  flex-direction: column;
+}
+
+#score div:nth-child(1) {
+  /* align-self: flex-start; */
+  padding-left: 5px;
+}
+
+#score div:nth-child(2) {
+  /* align-self: flex-start; */
+  padding-left: 5px;
 }
 
 .newGame {
@@ -120,7 +146,7 @@ input {
   /* background-color: rgba(255,255,255,0.5); */
   /* height: 2em; */
   text-align: left;
-  padding-left: 10px;
+  /* padding-left: 10px; */
 }
 
 
