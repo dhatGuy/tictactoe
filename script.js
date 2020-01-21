@@ -100,33 +100,26 @@ const gameFlow = (() => {
 
     let checkWin = function (arg) {
 
-        let winningComb = [""];
-        if (gameBoard.board[0] === "X" && gameBoard.board[1] === "X" && gameBoard.board[2] === "X") {
-            winningComb = [0, 1, 2];
-        }
-        else if (gameBoard.board[3] === "X" && gameBoard.board[4] === "X" && gameBoard.board[5] === "X") {
-            winningComb = [3, 4, 5];
-        }
-        else if (gameBoard.board[6] === "X" && gameBoard.board[7] === "X" && gameBoard.board[8] === "X") {
-            winningComb = [6, 7, 8];
-        }
-        else if (gameBoard.board[0] === "X" && gameBoard.board[3] === "X" && gameBoard.board[6] === "X") {
-            winningComb = [0, 3, 6];
-        }
-        else if (gameBoard.board[1] === "X" && gameBoard.board[4] === "X" && gameBoard.board[7] === "X") {
-            winningComb = [1, 4, 7];
-        }
-        else if (gameBoard.board[2] === "X" && gameBoard.board[5] === "X" && gameBoard.board[8] === "X") {
-            winningComb = [2, 5, 8];
-        }
-        else if (gameBoard.board[0] === "X" && gameBoard.board[4] === "X" && gameBoard.board[8] === "X") {
-            winningComb = [0, 4, 8];
-        }
-        else if (gameBoard.board[2] === "X" && gameBoard.board[4] === "X" && gameBoard.board[6] === "X") {
-            winningComb = [2, 4, 6];
-        }
-        if (winningComb[0] !== "") {
-            winningComb.forEach(e => {
+        let playerMark = "X";
+
+        let possibleWinningCombs = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+
+        let winningComb = possibleWinningCombs.find(c => {
+            return gameBoard.board[c[0]] == playerMark && gameBoard.board[c[1]] == playerMark && gameBoard.board[c[2]] == playerMark
+        });
+
+    
+            if (winningComb) {
+                winningComb.forEach(e => {
                 let y2 = document.getElementById(`${e + 1}`);
                 y2.style.backgroundColor = "grey";
             })
@@ -147,34 +140,14 @@ const gameFlow = (() => {
 
         }
 
-        let winningCombO = [""];
-        if (gameBoard.board[0] === "O" && gameBoard.board[1] === "O" && gameBoard.board[2] === "O") {
-            winningCombO = [0, 1, 2];
-        }
-        else if (gameBoard.board[3] === "O" && gameBoard.board[4] === "O" && gameBoard.board[5] === "O") {
-            winningCombO = [3, 4, 5];
-        }
-        else if (gameBoard.board[6] === "O" && gameBoard.board[7] === "O" && gameBoard.board[8] === "O") {
-            winningCombO = [6, 7, 8];
-        }
-        else if (gameBoard.board[0] === "O" && gameBoard.board[3] === "O" && gameBoard.board[6] === "O") {
-            winningCombO = [0, 3, 6];
-        }
-        else if (gameBoard.board[1] === "O" && gameBoard.board[4] === "O" && gameBoard.board[7] === "O") {
-            winningCombO = [1, 4, 7];
-        }
-        else if (gameBoard.board[2] === "O" && gameBoard.board[5] === "O" && gameBoard.board[8] === "O") {
-            winningCombO = [2, 5, 8];
-        }
-        else if (gameBoard.board[0] === "O" && gameBoard.board[4] === "O" && gameBoard.board[8] === "O") {
-            winningCombO = [0, 4, 8];
-        }
-        else if (gameBoard.board[2] === "O" && gameBoard.board[4] === "O" && gameBoard.board[6] === "O") {
-            winningCombO = [2, 4, 6];
-        }
+        let computerMark = "O";
+
+        let winningCombO = possibleWinningCombs.find(c => {
+            return gameBoard.board[c[0]] == computerMark && gameBoard.board[c[1]] == computerMark && gameBoard.board[c[2]] == computerMark
+        });
 
 
-        if (winningCombO[0] !== "") {
+           if (winningCombO) {
             winningCombO.forEach(e => {
                 let y2 = document.getElementById(`${e + 1}`);
                 y2.style.backgroundColor = "grey";
@@ -196,7 +169,7 @@ const gameFlow = (() => {
 
         }
 
-        else if (winningComb[0] === "" && arg === "end") {
+        else if (winningComb === undefined && arg === "end") {
             let newGame = document.querySelector(".newGame");
             newGame.style.display = "block";
             alert("It's a tie!");
@@ -427,7 +400,8 @@ function aiPlay() {
         // if it is the computer's turn loop over the moves and choose the move with the highest score
         var bestMove;
         if (player === aiPlayer) {
-            var bestScore = -10000;
+            // var bestScore = -10000;
+            var bestScore = -Infinity;
             for (var i = 0; i < moves.length; i++) {
                 if (moves[i].score > bestScore) {
                     bestScore = moves[i].score;
@@ -437,7 +411,8 @@ function aiPlay() {
         } else {
 
             // else loop over the moves and choose the move with the lowest score
-            var bestScore = 10000;
+            var bestScore = Infinity;
+            // var bestScore = 10000;
             for (var i = 0; i < moves.length; i++) {
                 if (moves[i].score < bestScore) {
                     bestScore = moves[i].score;
