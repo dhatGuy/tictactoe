@@ -310,6 +310,13 @@ playComp();
 
 function aiPlay() {
 
+    // ATTENTION!
+    // ATTENTION!
+    // ATTENTION!
+    // We have copy pasted the below code from a tutorial and only slightly 
+    // modified it to work with our tictactoe game. 
+    // ~nearmint
+
     let origBoard = ["O", 1, "X", "X", 4, "X", 6, "O", "O"];
     let aiPlayer = "O";
     let huPlayer = "X";
