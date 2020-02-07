@@ -3,10 +3,7 @@ const gameBoard = (() => {
 
     let binge = document.querySelectorAll("div > div > div");
 
-
     let clickFunction = function (e) {
-        // console.log(e)
-
         let amountofX = 0;
         let amountofO = 0;
 
@@ -14,10 +11,6 @@ const gameBoard = (() => {
             if (board[g] === "X") amountofX++;
             else if (board[g] === "O") amountofO++;
         }
-
-        // console.log("amountofX " + amountofX);
-        // console.log("amountofO " + amountofO);
-
 
         if (amountofX > amountofO) {
             e.target.textContent = 'O'
@@ -93,7 +86,6 @@ const Player = (name) => {
 
 let player1;
 let player2;
-
 
 const gameFlow = (() => {
     let binge = document.querySelectorAll("div > div > div");
@@ -179,7 +171,6 @@ const gameFlow = (() => {
 
 
     let newGame = function () {
-        //  gameBoard.board = [0,1,2,3,4,5,6,7,8];
         for (let g = 0; g < gameBoard.board.length; g++) {
             gameBoard.board[g] = g;
             document.getElementById(`${g + 1}`).textContent = "";
@@ -235,16 +226,10 @@ const gameFlow = (() => {
                 document.getElementById(`${e + 1}`).textContent = "O";
                 gameBoard.board[e] = "O";
                 document.getElementById(`${e + 1}`).removeEventListener('click', gameBoard.clickFunction);
-
-                // amountofO++;
-
-                // console.log("test");
                 return;
 
             }
-
         }
-        // console.log(newMove);
     }
 
     const startGame = () => {
@@ -258,13 +243,10 @@ const gameFlow = (() => {
     };
     startGame();
 
-
-
 let playMode = () =>{
     let single = document.querySelector('.single')
     let multi = document.querySelector('.multi')
     let mode = document.querySelector('.play-mode')
-
 
     mode.addEventListener('click', e =>{
         if(e.target.className == 'single'){
@@ -285,7 +267,6 @@ let playComp = () =>{
             document.querySelector('.player2').style.display = "none";
             document.getElementById('playertype').style.display = "none";
             document.getElementById('player2').value="Computer (easy)";
-            // document.querySelector('.grid-container').style.display = 'flex'
         } else {
             document.querySelector('form').style.display = 'block';
             document.querySelector('.player2').style.display = "none";
@@ -297,7 +278,6 @@ let playComp = () =>{
 
 playMode();
 playComp();
-
 
     return {
         checkWin,

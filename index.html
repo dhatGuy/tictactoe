@@ -1,89 +1,93 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-  <link rel="stylesheet" href="style.css" />
-</head>
+  <body>
+    <h1>Tic-Tac-Toe</h1>
+    <div id="scoreboard"></div>
 
-<body>
-  <h1>Tic Tac Toe</h1>
-<div id="scoreboard">
-<br/>
-<br/>
-</div>
+    <div class="play-mode">
+      <button class="single">
+        Play against the computer
+      </button>
+      <br />
+      <button class="multi">
+        Play with a friend
+      </button>
+    </div>
 
-  <div class="play-mode">
-    <button class="single">
-      Play against the computer
-    </button> <br>
-    <button class="multi">
-      Play with a friend
-    </button>
-  </div>
-  
-  <div id="playertype">
-    
+    <div id="playertype">
       <div id="difficulty">
         Choose your difficulty level
       </div>
-     <div>
-      <input type="button" id="pvc-easy" value="Computer (easy)"  />
+      <div>
+        <input type="button" id="pvc-easy" value="Computer (easy)" />
       </div>
       <div>
-      <input type="submit" id="pvc-unbeatable" value="Computer (hard)" />
-
-        </div>
- </div>
-
-
-
-  <form>
-    <div class="players">
-      <label for="Player 1">
-        Player One <br />
-        <input type="text" id="player1" required placeholder="Your Name"/> </label><br />
-      <div class="player2">
-        <label for="Player 2">
-          Player Two <br />
-          <input type="text" id="player2" required placeholder="Friend's Name"/>
-        </label>
+        <input type="submit" id="pvc-unbeatable" value="Computer (hard)" />
       </div>
-    <button type="submit" class="startGame" value="Start Game">
-      Start Game
-    </button>
-  </div>
-  </form>
-
-  <div id="score">
-    <div id="player1-name"></div>
-    <div id="player2-name"></div>
-    <div id="score-overview"></div>
-    <button class="newGame" onclick="gameFlow.newGame()">New Round</button>
-    <button class="reset" onclick="location.reload()">Reset Game</button>
-  </div>
-  
-  
-  
-
-  <div class="grid-container">
-    <div class="menu">
-      <div id="1"></div>
-      <div id="2"></div>
-      <div id="3"></div>
-
-      <div id="4"></div>
-      <div id="5"></div>
-      <div id="6"></div>
-
-      <div id="7"></div>
-      <div id="8"></div>
-      <div id="9"></div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <form>
+      <div class="players">
+        <label for="Player 1">
+          Player One <br />
+          <input
+            type="text"
+            id="player1"
+            required
+            placeholder="Your Name"
+          /> </label
+        ><br />
+        <div class="player2">
+          <label for="Player 2">
+            Player Two <br />
+            <input
+              type="text"
+              id="player2"
+              required
+              placeholder="Friend's Name"
+            />
+          </label>
+        </div>
+        <button type="submit" class="startGame" value="Start Game">
+          Start Game
+        </button>
+      </div>
+    </form>
 
-</body>
+    <div id="score">
+      <div id="player1-name"></div>
+      <div id="player2-name"></div>
+      <div id="score-overview"></div>
+      <button class="newGame" onclick="gameFlow.newGame()">New Round</button>
+      <button class="reset" onclick="location.reload()">Reset Game</button>
+    </div>
 
+    <div class="grid-container">
+      <div class="menu">
+        <div id="1"></div>
+        <div id="2"></div>
+        <div id="3"></div>
+
+        <div id="4"></div>
+        <div id="5"></div>
+        <div id="6"></div>
+
+        <div id="7"></div>
+        <div id="8"></div>
+        <div id="9"></div>
+      </div>
+    </div>
+
+    <footer>
+      Made by <a href="http://www.github.com/dhatguy">dhatGuy</a> &
+      <a href="http://www.github.com/nearmint">nearmint</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>
