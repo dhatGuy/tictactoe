@@ -108,6 +108,7 @@ h1 {
   width: 600px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .players {
@@ -152,10 +153,6 @@ div div div {
   height: 200px;
   font-size: 120px;
   color: black;
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
-  user-select: none; /* Standard */
 }
 
 div div div:nth-child(1),
@@ -226,10 +223,7 @@ footer{
     width: 100%;
     font-size: 12px;
     display: block;
-  }
-
-  div #pvc-easy{
-    margin-bottom: 3px;
+    padding: 5px;
   }
 
   h1{
@@ -244,10 +238,5 @@ footer{
     height: 80px;
     font-size: 50px;
     color: black;
-
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
   }
 }
